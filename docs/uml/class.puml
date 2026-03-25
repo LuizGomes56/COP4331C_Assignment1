@@ -1,0 +1,87 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title COP4331 Color Manager - Class Diagram
+
+class User {
+  +ID: int
+  +FirstName: string
+  +LastName: string
+  +Login: string
+  +Password: string
+}
+
+class Color {
+  +ID: int
+  +Name: string
+  +UserID: int
+}
+
+class AppJS {
+  -urlBase: string
+  -extension: string
+  -userId: int
+  -firstName: string
+  -lastName: string
+  +doLogin(): void
+  +saveCookie(): void
+  +doLogout(): void
+  +addColor(): void
+  +searchColor(): void
+}
+
+class LoginPage {
+  +loginName: string
+  +loginPassword: string
+  +loginButton: button
+  +loginResult: string
+}
+
+class ColorPage {
+  +searchText: string
+  +colorText: string
+  +colorList: string
+  +colorSearchResult: string
+  +colorAddResult: string
+}
+
+class LoginPHP {
+  +getRequestInfo()
+  +sendResultInfoAsJson()
+  +returnWithError()
+}
+
+class AddColorPHP {
+  +getRequestInfo()
+  +sendResultInfoAsJson()
+  +returnWithError()
+}
+
+class SearchColorsPHP {
+  +getRequestInfo()
+  +sendResultInfoAsJson()
+  +returnWithError()
+}
+
+class MySQLDatabase {
+  +Users table
+  +Colors table
+}
+
+LoginPage --> AppJS : uses
+ColorPage --> AppJS : uses
+
+AppJS --> LoginPHP : POST /Login.php
+AppJS --> AddColorPHP : POST /AddColor.php
+AppJS --> SearchColorsPHP : POST /SearchColors.php
+
+LoginPHP --> User : authenticates
+AddColorPHP --> Color : creates
+SearchColorsPHP --> Color : queries
+
+LoginPHP --> MySQLDatabase : reads
+AddColorPHP --> MySQLDatabase : inserts
+SearchColorsPHP --> MySQLDatabase : selects
+
+User "1" -- "0..*" Color : owns
+@enduml

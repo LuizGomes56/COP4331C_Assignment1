@@ -1,0 +1,33 @@
+@startuml
+start
+
+:Open index.html;
+:Enter username and password;
+:Click "Do It";
+:Send POST request to Login.php;
+
+if (Credentials valid?) then (yes)
+  :Store firstName, lastName, and userId in cookie;
+  :Redirect to color.html;
+
+  while (User stays on color page?) is (yes)
+    if (Choose action) then (Search color)
+      :Enter search text;
+      :Send POST request to SearchColors.php;
+      :Display matching colors;
+    elseif (Add color)
+      :Enter a new color;
+      :Send POST request to AddColor.php;
+      :Show confirmation message;
+    else (Log out)
+      :Clear cookie values;
+      :Redirect to index.html;
+      stop
+    endif
+  endwhile (no)
+else (no)
+  :Show "User/Password combination incorrect";
+endif
+
+stop
+@enduml

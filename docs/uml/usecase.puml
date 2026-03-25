@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+title COP4331 Color Manager - Use Case Diagram
+
+actor "User" as User
+
+rectangle "COP4331 Web Application" {
+  usecase "Log In" as UC_Login
+  usecase "Search for Color" as UC_Search
+  usecase "Add Color" as UC_Add
+  usecase "Log Out" as UC_Logout
+}
+
+User --> UC_Login
+User --> UC_Search
+User --> UC_Add
+User --> UC_Logout
+
+UC_Search ..> UC_Login : <<requires>>
+UC_Add ..> UC_Login : <<requires>>
+UC_Logout ..> UC_Login : <<requires>>
+
+@enduml
