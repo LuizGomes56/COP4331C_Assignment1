@@ -5,7 +5,8 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
-function doLogin() {
+// @eslint-disable-next-line
+function _doLogin() {
     userId = 0;
     firstName = "";
     lastName = "";
@@ -57,7 +58,7 @@ function saveCookie() {
     document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
-function doLogout() {
+function _doLogout() {
     userId = 0;
     firstName = "";
     lastName = "";
@@ -65,11 +66,11 @@ function doLogout() {
     window.location.href = "index.html";
 }
 
-function addColor() {
+function _addColor() {
     let newColor = document.getElementById("colorText").value;
     document.getElementById("colorAddResult").innerHTML = "";
 
-    let tmp = { color: newColor, userId, userId };
+    let tmp = { color: newColor, userId };
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/AddColor.' + extension;
@@ -91,7 +92,7 @@ function addColor() {
 
 }
 
-function searchColor() {
+function _searchColor() {
     let srch = document.getElementById("searchText").value;
     document.getElementById("colorSearchResult").innerHTML = "";
 
