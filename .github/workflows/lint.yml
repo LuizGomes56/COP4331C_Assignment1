@@ -1,0 +1,29 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - assignment_4_github_actions
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v4
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installing npm dependencies
+        run: npm ci
+
+      - name: Running npm linter command lint
+        run: npm run lint
