@@ -1,0 +1,35 @@
+{
+  "name": "cop4331c_assignment1",
+  "version": "1.0.0",
+  "description": "| First Name | Last Name | Due date | Professor |\r |----------|----------|----------|----------|\r | Luiz Gustavo | Santana Dias Gomes | 2/15/2026 | Yadavally |",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "lint:js": "eslint public/**/*.js",
+    "lint:css": "stylelint \"public/css/**/*.css\"",
+    "lint:html": "htmlhint \"public/**/*.html\"",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizGomes56/COP4331C_Assignment1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LuizGomes56/COP4331C_Assignment1/issues"
+  },
+  "homepage": "https://github.com/LuizGomes56/COP4331C_Assignment1#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
