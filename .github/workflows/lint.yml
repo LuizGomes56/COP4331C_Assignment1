@@ -1,15 +1,15 @@
-name: Lint
+name: CI
 
 on:
   push:
     branches:
       - main
       - master
-      - assignment_4_github_actions
+      - assignment-testing
   pull_request:
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,16 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Setting up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
       - name: Installing npm dependencies
         run: npm ci
 
-      - name: Running npm linter command lint
+      - name: Running linter
         run: npm run lint
+
+      - name: Running tests
+        run: npm test
